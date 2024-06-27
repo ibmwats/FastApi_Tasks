@@ -1,0 +1,49 @@
+{% extends '/base.html' %}
+{% block title %}Сайты в системе{% endblock%}
+{% block h1 %}Сайты в системе{% endblock%}
+
+{% block body %}
+<div class="card-header">
+    <i class="fas fa-table me-1"></i>
+    База данных
+</div>
+<div class="card-body">
+    <table id="datatablesSimple">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Domain</th>
+            <th>Login</th>
+            <th>Password</th>
+            <th>Theme</th>
+            <th>Last Post</th>
+            <th>Last Post Date</th>
+        </tr>
+        </thead>
+        <tfoot>
+        <tr>
+            <th>ID</th>
+            <th>Domain</th>
+            <th>Login</th>
+            <th>Password</th>
+            <th>Theme</th>
+            <th>Last Post</th>
+            <th>Last Post Date</th>
+        </tr>
+        </tfoot>
+        <tbody>
+        {% for site in sites %}
+        <tr>
+            <td>{{ site.id}}</td>
+            <td>{{ site.domain }}</td>
+            <td>{{ site.login }}</td>
+            <td>{{ site.password }}</td>
+            <td>{{ site.theme.name }}</td>
+            <td>{{ site.posts[-1].domain }}</td>
+            <td>{{ site.posts[-1].date_post }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
